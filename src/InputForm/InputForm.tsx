@@ -1,4 +1,27 @@
 import {useState, useEffect, useCallback} from "react";
+import Button from '@mui/material/Button'
+import {textFieldClasses} from "@mui/material";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
+export default function BasicTextFields() {
+    return (
+        <Box
+            component="form"
+            sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+            <TextField id="filled-basic" label="Filled" variant="filled" />
+            <TextField id="standard-basic" label="Standard" variant="standard" />
+        </Box>
+    );
+}
+
 
 interface InputFormProps {
     defaultValue?: string;
@@ -54,9 +77,10 @@ export const InputForm = (props?: InputFormProps) => {
 
     return <div style={{display:"flex", flexDirection: "column"}}>
         {displayError && <div style={{color: 'red'}}>{errorMessage}</div>}
-        <div>User name:</div>
-        <input onInput={handleInputChange} value={inputValue} type="text"/>
+        <div style={{margin:"20px 0", color:"black"}}>User name:</div>
+        <TextField id="filled-basic" onInput={handleInputChange} value={inputValue} type="text"/>
         <br/>
-        <button onClick={handleSubmit} disabled={!formReadyToSubmit}>Submit data</button>
+        <Button variant="contained" onClick={handleSubmit} disabled={!formReadyToSubmit}>Submit data</Button>
+        <a href={"https://github.com/DagothKur/test-app"}>Link do repo</a>
     </div>
 }
